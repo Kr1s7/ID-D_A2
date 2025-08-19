@@ -38,6 +38,20 @@ video {
 /* Storing custom CSS properties */
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties */
 
+:root {
+  --col01: #80ff00; /* dark background */
+  --col02: #000000; /* light text */
+  --col03: #ff0000; /* highlight color */
+  --border: solid var(--col01); /* border style */
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --col01: #000000; /* light background */
+    --col02: #51ff00; /* dark text */
+    --col03: #ff0000; /* highlight color */
+    --border: solid var(--col01); /* border style */
+  }
+}
 /* .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:. .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.  */
 /* Intro Modal dialog */
 /* need to apply to open dialog, otherwise flex interferes with closing */
@@ -65,4 +79,47 @@ dialog::backdrop {
   /* background-color: var(--col01); */
   /* color: var(--col02); */
   padding: 0 1rem;
+  background-color: var(--col03);
+}
+
+.keyboardCont {
+  display: flex;
+  height: 10rem;
+  background-color: var(--col03);
+}
+
+.octaveCont {
+  position: relative;
+  width: 15rem;
+}
+.whiteKeyCont {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: stretch;
+}
+.whiteKey {
+  flex: 1;
+}
+.whiteKey:hover {
+  cursor: pointer;
+}
+.whiteKey:active {
+  background-color: var(--col03);
+}
+.blackKeyCont {
+  position: absolute;
+  top: 0%;
+  display: flex;
+  height: 50%;
+  width: 100%;
+  align-items: stretch;
+}
+.blackKey {
+  flex: 1;
+}
+.ghostKey {
+  flex: 0.5;
+  opacity: 0;
+  pointer-events: none;
 }
