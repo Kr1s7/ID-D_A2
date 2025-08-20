@@ -1,3 +1,27 @@
+let bodyElement = document.body;
+let myButton = document.getElementById("exampleButton");
+
+function changeBodyBackgroundColor(){
+  bodyElement.style.backgroundColor = "red";
+}
+
+myButton.addEventListener("click", changeBodyBackgroundColor);
+
+function playSynthezizerNote (event) {
+  console.log(event);
+  let note = "f3";
+  polySynth.triggerAttackRelease(note, "8n", );
+}
+
+myButton.addEventListener("click", playSynthezizerNote);
+
+function checkWindowWidth(){
+  letwindowWidth = window.innerWidth;
+  buttonOutputText.textContent = windpowWidth;
+}
+
+myButton.addEventListener("click", checkWindowWidth);
+
 ///////////// Button
 
 let buttonOutputText = document.getElementById("buttonOutput");
