@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="randomFunctions.js" defer></script>
+    <script src="dateFunctions.js" defer></script>
+    <script src="locationFunctions.js" defer></script>
+
+    <title>Adv Function Demos</title>
+
+    <link rel="icon" type="image/png" href="./favicon.png" />
+  </head>
+
+  <body>
+    <header>
+      <h1 id="pageHeading">Advanced Function Demo</h1>
+    </header>
+    <main>
+      <section>
+        <h2>Random Demos</h2>
+        <fieldset>
+          <legend>Basic random number:</legend>
+          <button id="basicRandomBtn">Generate random</button>
+          <p>Result: <span id="basicRandomSpan"></span></p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Random number in range:</legend>
+          <p>Between 5 and 10</p>
+          <button id="randomRangeBtn">Generate random</button>
+          <p>Result: <span id="randomRangeSpan"></span></p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Random integer in range:</legend>
+          <p>Between 0 and 5</p>
+          <button id="randomIntRangeBtn">Generate random</button>
+          <p>Result: <span id="randomIntRangeSpan"></span></p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Random non-repeating integer in range:</legend>
+          <p>Between 2 and 8</p>
+          <p>
+            Last random number: <span id="lastRandomNonRepIntRangeSpan"></span>
+          </p>
+          <button id="randomNonRepIntRangeBtn">Generate random</button>
+          <p>Result: <span id="randomNonRepIntRangeSpan"></span></p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Random pick from list:</legend>
+          <p>List: <span id="listForRandomSpan"></span></p>
+          <button id="randomFromListBtn">Generate random</button>
+          <p>Result: <span id="randomFromListSpan"></span></p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Random cycle through list:</legend>
+          <p>List: <span id="listForRandomCycleSpan"></span></p>
+          <button id="randomFromListCycleBtn">Generate random</button>
+          <p>Result: <span id="randomFromListCycleSpan"></span></p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Random probability:</legend>
+          <button id="randomProbBtn">
+            Generate random chance 20% Blue 80% Red
+          </button>
+          <p>List: <span id="listForRandomProbSpan"></span></p>
+          <button id="randomFromListProbBtn">Generate random</button>
+          <p>Result: <span id="randomFromListProbSpan"></span></p>
+        </fieldset>
+      </section>
+      <section>
+        <h2>Date/Time Demo</h2>
+        <fieldset>
+          <legend>Current Date/Time:</legend>
+          <button id="checkDateTimeBtn">Check Current Date/Time</button>
+          <p>Milliseconds since January 1, 1970, UTC: <span id="dateNowSpan"></span></p>
+          <p>System Date Time: <span id="systemDateSpan"></span></p>
+          <p>Current Timezone offset (minutes): <span id="currentTimezoneSpan"></span></p>
+          <p>Current Month: <span id="currentMonthSpan"></span></p>
+          <p>Milliseconds since last click: <span id="lastClickSpan"></span></p>
+        </fieldset>
+        <fieldset>
+          <legend>Set Date/Time:</legend>
+          <input type="datetime-local" name="setdate" id="setDateTimeInput">
+          <p>Set Date and Time: <span id="dateSetSpan"></span></p>
+          <p>Days ago or from now: <span id="daysDifferenceSpan"></span></p>
+        </fieldset>
+      </section>
+      <section>
+        <h2>Location Demo</h2>
+        <fieldset>
+          <legend>Current Location:</legend>
+          <button id="checkLocationBtn">Check Device Location</button>
+          <p>Current latitude and longitude: <span id="locationSpan"></span></p>
+          <p>Current address: <span id="addressSpan"></span></p>
+          <p>Current temperature: <span id="tempSpan"></span></p>
+        </fieldset>
+      </section>
+    </main>
+  </body>
+</html>

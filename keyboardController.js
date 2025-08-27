@@ -1,6 +1,7 @@
 /* this is where you'd change out what the keyboard is controlling */
 /* as its imported AFTER script.js where polySynth is defined I can assign it here */
 let keyboardSynth = polySynth;
+//let keyboardSynth = sampler;
 
 /* find keys by their class and add to array */
 let allKeys = Array.from(document.getElementsByClassName("whiteKey")).concat(
