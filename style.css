@@ -39,19 +39,18 @@ video {
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties */
 
 :root {
-  --col01: #80ff00; /* dark background */
-  --col02: #000000; /* light text */
-  --col03: #ff0000; /* highlight color */
-  --border: solid var(--col01); /* border style */
+  --col01: rgb(15, 30, 58);
+  --col02: rgb(255, 214, 255);
+  --border: solid 1rem var(--col02);
 }
+
 @media (prefers-color-scheme: light) {
-  :root {
-    --col01: #000000; /* light background */
-    --col02: #51ff00; /* dark text */
-    --col03: #ff0000; /* highlight color */
-    --border: solid var(--col01); /* border style */
+  :root{
+    --col02: rgb(43, 110, 235);
+    --col01: rgb(192, 148, 53);
   }
 }
+
 /* .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:. .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.  */
 /* Intro Modal dialog */
 /* need to apply to open dialog, otherwise flex interferes with closing */
@@ -59,9 +58,9 @@ video {
 dialog[open] {
   margin: auto; /* place in centre */
   padding: 1rem;
-  /* background-color: var(--col01); */
-  /* color: var(--col02); */
-  /* border: var(--border); */
+  background-color: var(--col01);
+  color: var(--col02);
+  border: var(--border);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,21 +75,19 @@ dialog::backdrop {
   ); /* background overlay when modal is open */
 }
 #dialogCloseButton {
-  /* background-color: var(--col01); */
-  /* color: var(--col02); */
+  background-color: var(--col01);
+  color: var(--col02);
   padding: 0 1rem;
-  background-color: var(--col03);
 }
 
+/* Keyboard UI Style */
 .keyboardCont {
-  display: flex;
   height: 10rem;
-  background-color: var(--col03);
+  display: flex;
 }
-
 .octaveCont {
-  position: relative;
   width: 15rem;
+  position: relative;
 }
 .whiteKeyCont {
   display: flex;
@@ -100,26 +97,119 @@ dialog::backdrop {
 }
 .whiteKey {
   flex: 1;
+  padding: 0;
+  background-color: var(--col02);
 }
 .whiteKey:hover {
   cursor: pointer;
 }
 .whiteKey:active {
-  background-color: var(--col03);
+  /* filter: invert(); */
 }
 .blackKeyCont {
   position: absolute;
   top: 0%;
   display: flex;
-  height: 50%;
+  height: 55%;
   width: 100%;
   align-items: stretch;
+  pointer-events: none;
 }
 .blackKey {
   flex: 1;
+  padding: 0;
+  pointer-events: all;
+  background-color: var(--col01);
 }
 .ghostKey {
   flex: 0.5;
-  opacity: 0;
-  pointer-events: none;
+}
+
+/* range input */
+input[type=range] {
+  width: 100%;
+  margin: 0px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  background: var(--col01);
+  border: 1.6px solid #010101;
+  border-radius: 0.1px;
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  margin-top: -1.6px;
+  width: 9px;
+  height: 20px;
+  background: var(--col02);
+  border: 1.3px solid #000000;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #8eb9df;
+}
+input[type=range]::-moz-range-track {
+  background: var(--col01);
+  border: 1.6px solid #010101;
+  border-radius: 0.1px;
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+  width: 9px;
+  height: 20px;
+  background: var(--col02);
+  border: 1.3px solid #000000;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 1px 0;
+  color: transparent;
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+}
+input[type=range]::-ms-fill-lower {
+  background: #0f2436;
+  border: 1.6px solid #010101;
+  border-radius: 0.2px;
+}
+input[type=range]::-ms-fill-upper {
+  background: var(--col01);
+  border: 1.6px solid #010101;
+  border-radius: 0.2px;
+}
+input[type=range]::-ms-thumb {
+  width: 9px;
+  height: 20px;
+  background: var(--col02);
+  border: 1.3px solid #000000;
+  cursor: pointer;
+  margin-top: 0px;
+  /*Needed to keep the Edge thumb centred*/
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: var(--col01);
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #8eb9df;
+}
+/*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+how to remove the virtical space around the range input in IE*/
+@supports (-ms-ime-align:auto) {
+  /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+  input[type=range] {
+    margin: 0;
+    /*Edge starts the margin from the thumb, not the track as other browsers do*/
+  }
 }

@@ -1,26 +1,16 @@
 let bodyElement = document.body;
-let myButton = document.getElementById("exampleButton");
 
-function changeBodyBackgroundColour() {
+function changeBackgroundColour(){
   bodyElement.style.backgroundColor = "red";
 }
 
-function playSynthesizerNote(event) {
-  console.log(event);
-  let note = "f3";
-  polySynth.triggerAttackRelease(note, "8n");
-}
+let myButton = document.getElementById("exampleButton");
+myButton.addEventListener("click", changeBackgroundColour);
 
-// myButton.addEventListener("click",changeBodyBackgroundColour);
+myButton.addEventListener("click", () => {
+  polySynth.triggerAttackRelease("c3", "8n");
+});
 
-myButton.addEventListener("click", playSynthesizerNote);
-
-function checkWindowWidth() {
-  let checkWindowWWidth = window.innerWidth;
-  buttonOutputText.textContent = windowWidth;
-}
-
-myButton.addEventListener("click", checkWindowWidth);
 ///////////// Button
 
 let buttonOutputText = document.getElementById("buttonOutput");
@@ -75,7 +65,7 @@ let mySineRadio = document.getElementById("sine");
 let myTriangleRadio = document.getElementById("triangle");
 let radioOutputText = document.getElementById("radioOutput");
 
-function listRadioSelection(e) {
+function listRadioSelection(e){
   radioOutputText.textContent = e.target.value;
 }
 
@@ -94,14 +84,14 @@ mySelect.addEventListener("change", (e) => {
 let myRange = document.getElementById("exampleRange");
 let rangeOutputText = document.getElementById("rangeOutput");
 
-myRange.addEventListener("input", (e) => {
+myRange.addEventListener("change", (e) => {
   rangeOutputText.textContent = e.target.value;
 });
 
-function rangeEditStart() {
+function rangeEditStart(){
   
 }
-function rangeEditEnd() {
+function rangeEditEnd(){
   console.log("mouse up event heard");
 }
 
@@ -111,7 +101,7 @@ let colourOutputText = document.getElementById("colourOutput");
 
 myColourPicker.addEventListener("input", listColourOutput);
 
-function listColourOutput(e) {
+function listColourOutput(e){
   colourOutputText.textContent = e.target.value;
   colourOutputText.style.backgroundColor = e.target.value;
   colourOutputText.style.color = `hsl(from ${e.target.value} calc(360 - h) s calc(100 - l))`;
