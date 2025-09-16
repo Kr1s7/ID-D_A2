@@ -1,0 +1,21 @@
+.weather-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Space between buttons and weather list */
+}
+
+.weathernav {
+  background-color: #000000; /* Button background color */
+  color: white; /* Button text color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.weathernav.active {
+  background-color: #0056b3;
+  color: aliceblue; /* Active button background color */
+}

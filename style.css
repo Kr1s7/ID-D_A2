@@ -56,13 +56,55 @@ body {
   display: grid;
   grid-template-columns: 30% 40% 30%;
   grid-template-rows: 20% 60% 20%;
+  place-items: center;
 }
 
-#tempslider {
+.thermometer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px;
+  font-family: sans-serif;
   grid-column: 1;
-  grid-row: 1 / span 2;
-  writing-mode: vertical-lr;
-  direction: rtl"
+  grid-row: 1 / span 3;
+}
+
+.thermometer {
+  position: relative;
+  width: 50px;
+  height: 300px;
+  background: #eee;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+}
+
+.mercury {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to top, #ff4136, #ff726f);
+  border-radius: 25px 25px 0 0;
+  transition: height 0.1s;
+}
+
+.slider-handle {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 10px;
+  background: #333;
+  border-radius: 5px;
+  cursor: grab;
+  z-index: 2;
+}
+
+.temperature-display {
+  font-size: 24px;
+  font-weight: bold;
 }
 
 #autobutton {
@@ -77,45 +119,140 @@ body {
   background-color: rgb(117, 109, 109);
   grid-column: 2 / span 3;
   grid-row: 2;
+  height: 10vw;
+  width: 10vw;
+  place-items: center;
   
 }
 
-#seasons4 {
+.circle-container {
+  position: relative;
   width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 50% 50%;
+  border-radius: 100%;
+  background: #ddd;
+  overflow: hidden;
   place-items: center;
 }
 
-.seasons4 {
-  width: 5vw;
-  height: 5vw;
+/* Outer Zones - 4 Quadrants */
+.outer-zone {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  pointer-events: auto;
+  z-index: 1;
 }
 
-#spring {
-  border-radius: 100% 0 0 0;
-  background-color: lightgreen;
+.outer-zone.top-left { top: 0; left: 0; border-top-left-radius: 100%; }
+.outer-zone.top-right { top: 0; right: 0; border-top-right-radius: 100%; }
+.outer-zone.bottom-left { bottom: 0; left: 0; border-bottom-left-radius: 100%; }
+.outer-zone.bottom-right { bottom: 0; right: 0; border-bottom-right-radius: 100%; }
+
+/* Inner Circle - Top & Bottom halves */
+.inner-zone {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 150, 255, 0.05);
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: auto;
 }
 
-#summer {
-  background-color: yellowgreen;
-  border-radius: 0 100% 0 0;
+.inner-top {
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
 }
 
-#autumn {
-  background-color: orange;
-  border-radius: 0 0 0 100%;
-}
-#winter {
-  background-color: lightblue;
-  border-radius: 0 0 100% 0;
+.inner-bottom {
+  clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
 }
 
-#weatherslider {
-  grid-column: 1 / span 3;
+/* Draggables */
+.draggable {
+  position: absolute;
+  background: white;
+  border: 1px solid #333;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+  transition: left 0.3s ease, top 0.3s ease;
+}
+
+.drag-over {
+  background: rgba(0, 255, 0, 0.15) !important;
+}
+
+.label {
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  pointer-events: none; /* so text doesn't block dragging */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.circle-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #ddd;
+  overflow: visible;
+}
+
+/* Slider handles */
+.slider-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #ff5733;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s;
+}
+
+.slider-handle:hover {
+  background: #ff8c66;
+}
+
+.weather-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Space between buttons and weather list */
+  grid-column: 2 / span 3;
   grid-row: 3;
+}
+
+.weathernav {
+  background-color: #000000; /* Button background color */
+  color: white; /* Button text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  height: 10%;
+  width: 15%;
+}
+
+.weathernav.active {
+  background-color: #0056b3;
+  color: aliceblue; /* Active button background color */
 }
 
 /* TIME LOCATION SECTION */
@@ -185,62 +322,94 @@ body {
   height: 100%;
 }
 
-#searchbar {
-  background-color: purple;
-  height: 5%;
-  width: 100%;
-}
-
-#weatherdiv {
-  background-color: orange;
-  height: 80%;
+.container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  gap: 1rem;
+  width: 90%;
+  max-width: 350px;
 }
 
-.weatherlist {
-  background-color: rgb(76, 76, 76);
-  height: 100%;
+#location-input {
+  padding: 8px 12px;
   width: 100%;
-  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  max-height: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
-.weather {
-  height: 100%;
-  width: 100%;
-  background-color: lightpink;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  padding-top: 15%;
-  padding-bottom: 15%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+.track {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease-out;
+}
+
+.card {
+  width: 85%;
+  max-width: 300px;
+  height: clamp(90px, 22%, 150px);
+  margin: 2vh 0;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.4rem;
-  transform: translateY(100%);
-  transition: transform 0.4s ease;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   opacity: 0;
+  transform: scale(0.85);
+  pointer-events: none;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s, opacity 0.3s;
+  text-align: center;
 }
 
-.weather .active {
-  transform: translateY(0);
+.card img {
+  width: 48px;
+  height: 48px;
+  margin: 5px 0;
+}
+
+.card.visible {
+  opacity: 0.5;
+  pointer-events: auto;
+}
+
+.card.active {
+  transform: scale(1.1);
+  background: #ffefc3;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   opacity: 1;
-  z-index: 1;
 }
 
-.weather h2 {
-  font-size: 4rem;
-}
-
-.weathernav:hover {
-  background-color: lightgray;
+.nav-btn {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
   cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background 0.2s;
+}
+.nav-btn:hover {
+  background: #eee;
 }
 
 /* CONFIG BUTTONS */
@@ -255,4 +424,15 @@ body {
 .config {
   height: 100%;
   width: 20%;
+}
+
+@media (max-width: 900px) {
+  .uilayer {
+    flex-direction: column;
+    height: auto;
+  }
+  .column {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
 }
