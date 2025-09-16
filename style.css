@@ -23,193 +23,236 @@ html {
 }
 
 body {
-  min-height: 100vh;
+  overflow: hidden;
+  font-family: "itc-avant-garde-gothic-pro", sans-serif;
 }
 
-img,
-picture,
-svg,
-video {
-  display: block;
-  max-width: 100%;
+/* CSS */
+
+/*UI LAYER*/
+.uilayer {
+  margin-left: 3vw;
+  margin-right: 3vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  display: flex;
+  justify-content: space-between;
+  height: 90vh;
 }
 
-/* .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:. .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.  */
-/* Storing custom CSS properties */
-/* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties */
+/* COLUMN 1 */
 
-:root {
-  --col01: rgb(15, 30, 58);
-  --col02: rgb(255, 214, 255);
-  --border: solid 1rem var(--col02);
-}
-
-@media (prefers-color-scheme: light) {
-  :root{
-    --col02: rgb(43, 110, 235);
-    --col01: rgb(192, 148, 53);
-  }
-}
-
-/* .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:. .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.  */
-/* Intro Modal dialog */
-/* need to apply to open dialog, otherwise flex interferes with closing */
-
-dialog[open] {
-  margin: auto; /* place in centre */
-  padding: 1rem;
-  background-color: var(--col01);
-  color: var(--col02);
-  border: var(--border);
+.column1 {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-dialog::backdrop {
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* background overlay when modal is open */
-}
-#dialogCloseButton {
-  background-color: var(--col01);
-  color: var(--col02);
-  padding: 0 1rem;
+  justify-content: space-between;
+  width: 25%;
 }
 
-/* Keyboard UI Style */
-.keyboardCont {
-  height: 10rem;
-  display: flex;
+/* CONTROLS SECTION */
+.controlssection {
+  background-color: gray;
+  height: 60%;
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  grid-template-rows: 20% 60% 20%;
 }
-.octaveCont {
-  width: 15rem;
-  position: relative;
+
+#tempslider {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  writing-mode: vertical-lr;
+  direction: rtl"
 }
-.whiteKeyCont {
+
+#autobutton {
+  grid-column: 2;
+  grid-row: 1;
+}
+#randombutton {
+  grid-column: 3;
+  grid-row: 1;
+}
+.seasondragger {
+  background-color: rgb(117, 109, 109);
+  grid-column: 2 / span 3;
+  grid-row: 2;
+  
+}
+
+#seasons4 {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  place-items: center;
+}
+
+.seasons4 {
+  width: 5vw;
+  height: 5vw;
+}
+
+#spring {
+  border-radius: 100% 0 0 0;
+  background-color: lightgreen;
+}
+
+#summer {
+  background-color: yellowgreen;
+  border-radius: 0 100% 0 0;
+}
+
+#autumn {
+  background-color: orange;
+  border-radius: 0 0 0 100%;
+}
+#winter {
+  background-color: lightblue;
+  border-radius: 0 0 100% 0;
+}
+
+#weatherslider {
+  grid-column: 1 / span 3;
+  grid-row: 3;
+}
+
+/* TIME LOCATION SECTION */
+.timelocationsection {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 40%;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.timelocationsection h1 {
+  font-size: 3rem;
+  font-weight: 400;
+}
+.timelocationsection h2 {
+  font-size: 10rem;
+  font-weight: 400;
+}
+.timelocationsection h3 {
+  font-size: 4rem;
+  font-weight:1;
+}
+
+
+
+/*COLUMN 2 */
+
+.column2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.backgrounddiv {
+  background-color: lightblue;
+  mask-image: url(./assets/ellipse.svg);
+  mask-size: 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  height: 100%;
+  width: 80%;
+}
+
+/* COLUMN 3 */
+
+.column3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: lightgreen;
+  width: 25%;
+}
+
+.weatherscrollersection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+#searchbar {
+  background-color: purple;
+  height: 5%;
+  width: 100%;
+}
+
+#weatherdiv {
+  background-color: orange;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.weatherlist {
+  background-color: rgb(76, 76, 76);
   height: 100%;
   width: 100%;
-  align-items: stretch;
-}
-.whiteKey {
-  flex: 1;
-  padding: 0;
-  background-color: var(--col02);
-}
-.whiteKey:hover {
-  cursor: pointer;
-}
-.whiteKey:active {
-  /* filter: invert(); */
-}
-.blackKeyCont {
-  position: absolute;
-  top: 0%;
+  text-align: center;
   display: flex;
-  height: 55%;
-  width: 100%;
-  align-items: stretch;
-  pointer-events: none;
-}
-.blackKey {
-  flex: 1;
-  padding: 0;
-  pointer-events: all;
-  background-color: var(--col01);
-}
-.ghostKey {
-  flex: 0.5;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-/* range input */
-input[type=range] {
+.weather {
+  height: 100%;
   width: 100%;
-  margin: 0px 0;
-  background-color: transparent;
-  -webkit-appearance: none;
+  background-color: lightpink;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding-top: 15%;
+  padding-bottom: 15%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+  opacity: 0;
 }
-input[type=range]:focus {
-  outline: none;
+
+.weather .active {
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 1;
 }
-input[type=range]::-webkit-slider-runnable-track {
-  background: var(--col01);
-  border: 1.6px solid #010101;
-  border-radius: 0.1px;
-  width: 100%;
-  height: 20px;
+
+.weather h2 {
+  font-size: 4rem;
+}
+
+.weathernav:hover {
+  background-color: lightgray;
   cursor: pointer;
 }
-input[type=range]::-webkit-slider-thumb {
-  margin-top: -1.6px;
-  width: 9px;
-  height: 20px;
-  background: var(--col02);
-  border: 1.3px solid #000000;
-  cursor: pointer;
-  -webkit-appearance: none;
+
+/* CONFIG BUTTONS */
+#configbutton {
+  background-color: brown;
+  height: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #8eb9df;
-}
-input[type=range]::-moz-range-track {
-  background: var(--col01);
-  border: 1.6px solid #010101;
-  border-radius: 0.1px;
-  width: 100%;
-  height: 20px;
-  cursor: pointer;
-}
-input[type=range]::-moz-range-thumb {
-  width: 9px;
-  height: 20px;
-  background: var(--col02);
-  border: 1.3px solid #000000;
-  cursor: pointer;
-}
-input[type=range]::-ms-track {
-  background: transparent;
-  border-color: transparent;
-  border-width: 1px 0;
-  color: transparent;
-  width: 100%;
-  height: 20px;
-  cursor: pointer;
-}
-input[type=range]::-ms-fill-lower {
-  background: #0f2436;
-  border: 1.6px solid #010101;
-  border-radius: 0.2px;
-}
-input[type=range]::-ms-fill-upper {
-  background: var(--col01);
-  border: 1.6px solid #010101;
-  border-radius: 0.2px;
-}
-input[type=range]::-ms-thumb {
-  width: 9px;
-  height: 20px;
-  background: var(--col02);
-  border: 1.3px solid #000000;
-  cursor: pointer;
-  margin-top: 0px;
-  /*Needed to keep the Edge thumb centred*/
-}
-input[type=range]:focus::-ms-fill-lower {
-  background: var(--col01);
-}
-input[type=range]:focus::-ms-fill-upper {
-  background: #8eb9df;
-}
-/*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
-how to remove the virtical space around the range input in IE*/
-@supports (-ms-ime-align:auto) {
-  /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
-  input[type=range] {
-    margin: 0;
-    /*Edge starts the margin from the thumb, not the track as other browsers do*/
-  }
+
+.config {
+  height: 100%;
+  width: 20%;
 }
