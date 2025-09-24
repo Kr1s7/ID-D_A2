@@ -1,0 +1,43 @@
+what am i making: a website that tells the time, weather for 5 days after and before. Sound derives from the island in the lense, aswell as weather, season and time. Island changes depending on the seasons/dates and is also customizable
+
+- weather (ambiance)
+- time (ambience/chorus)
+- temperature (melody change for trees)
+- island (main music)
++ sticks and stones (bass)
++ trees (melody)
++ misc (bass)
+
+seasons:
+
+- spring:
++ trees: cherry blossom
++ sticks and stones
++ misc: butterflies
+* instruments: harp, 
+
+- summer:
++ trees: palm tree
++ sticks and stones
++ misc: coconuts
+* instruments: steel drums, ukulele, kalimba, marimba, acoustic guitar
+
+- autumm:
++ trees: maple tree
++ sticks and stones
++ misc: maple leaf
+
+- winter:
++ trees: pine tree
++ sticks and stones
++ misc: avalanche
+
+- wet season
++ trees: coral
++ sticks and stones
++ misc: shells
+
+- dry season
++ trees: acacia
++ sticks and stones
++ misc: tumbleweed

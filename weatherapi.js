@@ -1,19 +1,17 @@
-let Apikey = "e69dee4c8ee644c1a7314240251609"; // Get free key from weatherapi.com
+const API_KEY = "e69dee4c8ee644c1a7314240251609"; // Replace with your WeatherAPI key
 
 async function searchLocations() {
   const query = document.getElementById("searchbar").value.trim();
   if (!query) return alert("Please enter a location");
 
   try {
-    const res = await fetch(
-      `https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${query}`
-    );
+    const res = await fetch(`https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${query}`);
     const locations = await res.json();
 
     const resultsDiv = document.getElementById("results");
-    resultsDiv.innerHTML = ""; // clear previous results
+    resultsDiv.innerHTML = "";
 
-    if (locations.length === 0) {
+    if (!locations.length) {
       resultsDiv.textContent = "No matching locations found.";
       return;
     }
@@ -33,7 +31,7 @@ async function searchLocations() {
 async function fetchForecast(location) {
   try {
     const res = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${location.lat},${location.lon}&days=3`
+      `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location.lat},${location.lon}&days=3`
     );
     const data = await res.json();
     displayWeather(data);
@@ -43,7 +41,7 @@ async function fetchForecast(location) {
 }
 
 function displayWeather(data) {
-  document.getElementById("results").innerHTML = ""; // clear search results
+  document.getElementById("results").innerHTML = "";
 
   const output = document.getElementById("weather-output");
   output.innerHTML = `<h3>${data.location.name}, ${data.location.country}</h3>`;

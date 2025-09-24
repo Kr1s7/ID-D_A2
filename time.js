@@ -33,7 +33,6 @@ function changeTime() {
 
   const timeEl = document.getElementById("time");
   timeEl.innerHTML = time;
-  timeEl.classList.add("lcd-display"); // skeuomorphic class
 
   setTimeout(changeTime, 1000);
 }

@@ -61,7 +61,7 @@ function renderCards(weatherDays) {
   weatherDays.forEach((w) => {
     const card = document.createElement("div");
     // Add skeuomorphic classes
-    card.classList.add("card", "film-card");
+    card.classList.add("card");
 
     card.innerHTML = `
       <div class="lcd-display">${formatDate(w.date)}</div>

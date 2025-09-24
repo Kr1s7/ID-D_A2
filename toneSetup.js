@@ -1,6 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Polyphonic Synthesizer
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Polyphonic Synthesizer
 let polySynth = new Tone.PolySynth(Tone.Synth, {
   oscillator: {
     type: "fatsawtooth",
@@ -16,43 +14,28 @@ let polySynth = new Tone.PolySynth(Tone.Synth, {
   },
 });
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Sampler
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/* 
+// Sampler
 let sampler = new Tone.Sampler({
-    urls: {
-        D2: "mel_low_d.wav",
-        C3: "four.m4a",
-    },
-    baseUrl: "./assets/audioSamples/"
-});
-*/
+  urls: { C3: "malimba.m4a" },
+  baseUrl: "./assets/audioSamples/",
+}).toDestination();
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Audio Effects
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Audio Effects
 const filter = new Tone.Filter(20000, "lowpass");
-
 const distortion = new Tone.Distortion(0);
-
 const reverb = new Tone.Reverb(2);
+const meter = new Tone.Meter({ smoothing: 0.1 });
 
-const meter = new Tone.Meter();
-meter.smoothing = 0.1;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////// Functions
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-///////// Init Function
-// This gets triggered when the user closes the dialog element
-// It will connect the polysynth => filter => distortion => meter => audio output
+// Init
 function toneInit() {
   polySynth.chain(filter, distortion, reverb, meter, Tone.Destination);
-  // This is an alternative statement if the sampler is instead chosen : the only difference is the variable name
-  // The sampler above must be uncommented for this to work, as well as the declaration on line 3 of keyboardController.js
-  // sampler.chain(filter, distortion, meter, Tone.Destination);
 }
+
+// Event Listener for Weather Image
+const dayNightNav = document.getElementById("weatherimg");
+dayNightNav.addEventListener("click", async () => {
+  if (Tone.context.state !== "running") {
+    await Tone.start();
+  }
+  sampler.triggerAttackRelease("C3", "1n");
+});
