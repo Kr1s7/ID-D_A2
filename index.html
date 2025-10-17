@@ -11,19 +11,17 @@
     <link rel="stylesheet" href="style.css" />
 
     <!-- Import our JS files -->
-    <script src="helperFunctions.js" defer></script>
-    <script src="toneSetup.js" defer></script>
-    <script src="keyboardController.js" defer></script>
-    <script src="UIControls.js" defer></script>
-    <script src="time.js" defer></script>
-    <script src="cardslider.js" defer></script>
-    <script src="seasonareatest.js" defer></script>
+    <script src="weatherFetch.js" type="module" defer></script>
+    <script src="timeLocation.js" type="module" defer></script>
+    <script src="seasons.js" type="module" defer></script>
+    <script src="weather.js" type="module" defer></script>
+    <script src="cardslider.js" type="module" defer></script>
 
     <title>Patrick's Test</title>
 
     <!-- favicon attribution -->
     <!-- https://creativecommons.org/licenses/by/4.0/ -->
-    <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    <link rel="icon" type="image/png" href="./assets/favicon.svg" />
     <link rel="stylesheet" href="https://use.typekit.net/uuy7loz.css" />
   </head>
 
@@ -35,67 +33,82 @@
           <div class="thermometer-container">
             <input
               type="range"
-              min="0"
-              max="100"
-              value="50"
+              min="-30"
+              max="50"
+              value="15"
               class="thermometer"
               id="thermometer"
             />
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value="50"
-              class="thermometer"
-              id="windmeter"
-            />
-          </div>
-          <div class="configcolumn1">
-            <button class="randombutton">random</button>
-            <button class="randombutton">random</button>
-            <button class="randombutton">random</button>
+            <span id="thermo-value" class="slider-label">25°C</span>
           </div>
           <div class="seasondragger">
             <div class="circle-container">
               <!--Ring Zone (to be added)-->
 
               <!-- Outer Circle Zones -->
-              <button class="seasonnav outer-zone top-left"></button>
-              <button class="seasonnav outer-zone top-right"></button>
-              <button class="seasonnav outer-zone bottom-left"></button>
-              <button class="seasonnav outer-zone bottom-right"></button>
+              <button
+                class="seasonnav outer-zone top-left"
+                data-season="spring"
+                data-sampleDay="./assets/spring.wav"
+              >🌸</button>
+
+              <button
+                class="seasonnav outer-zone top-right"
+                data-season="summer"
+                data-sampleDay="assets/summer.wav"
+              >🌴</button>
+
+              <button
+                class="seasonnav outer-zone bottom-left"
+                data-season="winter"
+                data-sampleDay="assets/winter.wav"
+              >❄️</button>
+
+              <button
+                class="seasonnav outer-zone bottom-right"
+                data-season="autumn"
+                data-sampleDay="assets/autumn.wav"
+              >🍁</button>
+
               <!-- Inner Circle Zones -->
-              <button class="seasonnav inner-zone top"></button>
-              <button class="seasonnav inner-zone bottom"></button>
-              <button id="daynightnav">day/night</button>
+              <button
+                class="seasonnav inner-zone top"
+                data-season="dry"
+                data-sampleDay="assets/dry.wav"
+              >🌵</button>
+
+              <button
+                class="seasonnav inner-zone bottom"
+                data-season="wet"
+                data-sampleDay="assets/wet.wav"
+              >🪸</button>
+
+              <button id="daynightnav"></button>
             </div>
           </div>
           <div class="weather-container" id="weather-container">
-            <button class="weathernav" id="sunny">sunny</button>
-            <button class="weathernav" id="cloudy">cloudy</button>
-            <button class="weathernav" id="rainy">windy</button>
-            <button class="weathernav" id="windy">rainy</button>
-            <button class="weathernav" id="snowy">thunder</button>
-            <script src="weather.js"></script>
+            <button class="weathernav" id="clear">🌤️</button>
+            <button class="weathernav" id="cloudy">☁️</button>
+            <button class="weathernav" id="windy">💨</button>
+            <button class="weathernav" id="rainy">🌧️</button>
+            <button class="weathernav" id="thunder">🌩️</button>
+            <button class="weathernav" id="snowy">🌨️</button>
           </div>
         </section>
 
         <!-- Time and location section -->
         <section class="timelocationsection">
+          <div id="timeLocationdiv">
           <h1 id="date"></h1>
           <h2 id="time"></h2>
-          <h3 id="location"></h3>
+          <h3 id="location"></h3></div>
         </section>
       </section>
 
       <!-- Lens section -->
       <section class="column2">
-        <img
-          src="assets/AdobeStock_243259090.jpeg"
-          id="weatherimg"
-          draggable="false"
-        />
-        <h1>Click the lense for sound</h1>
+        <img id="weatherimg" src="assets/springday.jpeg" draggable="false" />
+        <h1>Click the lens to pause sound</h1>
       </section>
 
       <!-- Weather and temperature section -->
@@ -104,22 +117,12 @@
           <!-- Weather and temperature cards -->
           <input
             type="text"
-            id="location-input"
-            placeholder="Enter a city..."
+            id="locationinput"
+            placeholder="Enter city to check weather"
           />
 
           <div class="slider" id="slider">
-            <button class="nav-btn" id="up-btn">▲</button>
             <div class="track" id="track"></div>
-            <button class="nav-btn" id="down-btn">▼</button>
-          </div>
-
-          <!-- Config buttons -->
-          <div id="configbutton">
-            <button class="config" id="music">music</button>
-            <button class="config" id="sound">sound</button>
-            <button class="config" id="tempvalue">tempvalue</button>
-            <button class="config" id="placeholder">placeholder</button>
           </div>
         </section>
       </section>

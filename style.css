@@ -1,8 +1,6 @@
 /* .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:. .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.  */
 /* Font Imports */
-
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-
 
 *,
 *::before,
@@ -22,11 +20,10 @@ html {
 body {
   overflow: hidden;
   font-family: "itc-avant-garde-gothic-pro", sans-serif;
+  background: #111; /* Overall dark page background */
 }
 
-/* CSS */
-
-/*UI LAYER*/
+/* UI LAYER */
 .uilayer {
   margin-left: 3vw;
   margin-right: 3vw;
@@ -38,27 +35,24 @@ body {
 }
 
 /* COLUMN 1 */
-
 .column1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 25%;
-  background: rgba(255, 255, 255, 0.2);
+  background: #111111;
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 4px 10px #000, 0 4px 30px rgba(0,0,0,0.6);
+  border: 1px solid #222222;
 }
 
 /* CONTROLS SECTION */
 .controlssection {
-  background-color: gray;
+  background-color: #1a1a1a;
   height: 60%;
   display: grid;
   grid-template-columns: 20% 40% 40%;
-  grid-template-rows: 10% 70% 20%;
+  grid-template-rows: 70% 30%;
 }
 
 .thermometer-container {
@@ -67,167 +61,171 @@ body {
   justify-content: space-around;
   font-family: sans-serif;
   grid-column: 1;
-  grid-row: 1 / span 2;
+  grid-row: 1
 }
 
 #thermometer {
   -webkit-appearance: none;
   height: 90%;
-  width: 15%;
-  background: linear-gradient(to top, lightblue, tomato);
+  width: 50%;
+  background-color: #0360df;
+  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent),
+    linear-gradient(rgb(255, 0, 0),#00c3ff);
+  color: #fff;
+  border: 1px solid #0360df;
+  box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6),
+    inset 0 -4px 4px 1px #8de3fc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2),
+    0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 1px #116ee7;
   border-radius: 25px;
   overflow: hidden;
   writing-mode: vertical-lr;
   direction: rtl;
+
 }
 
-#windmeter {
+#thermometer::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 90%;
-  width: 15%;
-  background: linear-gradient(to top, rgb(203, 242, 255), rgb(71, 255, 114));
-  border-radius: 25px;
-  overflow: hidden;
-  writing-mode: vertical-lr;
-  direction: rtl;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #f8f9fb 0%, #e0e5ec 60%, #aeb5c0 100%);
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,0.6),
+    inset -2px -2px 4px rgba(0,0,0,0.2),
+    0 3px 6px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.temperature-display {
-  font-size: 24px;
-  font-weight: bold;
+#thermometer::-webkit-slider-thumb:active {
+  transform: scale(0.95);
+  box-shadow:
+    inset 2px 2px 4px rgba(0,0,0,0.3),
+    0 1px 2px rgba(0,0,0,0.2);
 }
 
-
-
-.configcolumn1 {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  grid-column: 2 / span 3;
-  grid-row: 1;
+#thermometer::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #f8f9fb 0%, #e0e5ec 60%, #aeb5c0 100%);
+  box-shadow:
+    inset 1px 1px 2px rgba(255,255,255,0.6),
+    inset -2px -2px 4px rgba(0,0,0,0.2),
+    0 3px 6px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
+
+#thermometer::-moz-range-thumb:active {
+  transform: scale(0.95);
+  box-shadow:
+    inset 2px 2px 4px rgba(0,0,0,0.3),
+    0 1px 2px rgba(0,0,0,0.2);
+}
+
+.slider-label {
+  position: absolute;
+  top: -25px;
+  font-size: 0.9rem;
+  color: #eee;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 2px 6px;
+  border-radius: 6px;
+  pointer-events: none;
+  transform: translateX(-50%);
+  transition: left 0.3s ease;
+}
+
+/* CONFIG BUTTONS */
 
 .randombutton {
-  background-color: #000000; /* Button background color */
-  color: white; /* Button text color */
+  background-color: #111;
+  color: #eee;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
   height: 50%;
-  width: 25%;}
-
-.randombutton:hover {
-  background-color: #0360df;
-  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
-  color: #fff;
-  border: 1px solid #0360df;
-  box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6), inset 0 -4px 4px 1px #8de3fc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px #116ee7;
+  width: 25%;
+  box-shadow: inset 0 -2px 5px #000, 0 2px 5px #111;
 }
 
+.randombutton:hover {
+  background-color: #222;
+  box-shadow: inset 0 -2px 5px #111, 0 2px 5px #333;
+}
+
+/* SEASON DRAGGER PANEL */
 .seasondragger {
-  background-color: rgb(48, 48, 48);
+  background-color: #121212;
   grid-column: 2 / span 3;
-  grid-row: 2;
+  grid-row: 1;
   height: 100%;
   width: 100%;
   justify-content: center;
   place-content: center;
   place-items: center;
-  
 }
 
 .circle-container {
   position: relative;
-  width: 16vw;
-  height: 16vw;
+  width: 15vw;
+  height: 15vw;
   border-radius: 100%;
-  background: #ddd;
+  background: #222;
   overflow: visible;
+  box-shadow: inset 0 0 10px #000, 0 4px 10px rgba(0,0,0,0.5);
 }
 
+/* SEASON NAV BUTTONS */
 .seasonnav {
   touch-action: manipulation;
   position: relative;
-  padding: 12px 16px;
   transition-property: border-color, transform, background-color;
   transition-duration: 0.2s;
+  background: #111;
+  border: 1px solid #333;
+  box-shadow: inset 0 -2px 5px #000, 0 2px 5px #111;
 }
 
 .seasonnav:hover {
-  background-color: #d2d2d2;
-  background-image: radial-gradient(75% 50% at 50% 0%, #ffffff, transparent), radial-gradient(75% 35% at 50% 80%, #ffffff, transparent);
-  color: #fff;
-  border: 1px solid #dadada;
-  box-shadow: inset 0 -2px 4px 1px rgba(226, 226, 226, 0.6), inset 0 -4px 4px 1px #ffffff, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(231, 17, 227, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px #dfdfdf;
-}
-
-/* Outer Zones*/
-.seasonnav.top-left.active {
-  background-color: #df03a8;
-  background-image: radial-gradient(75% 50% at 50% 0%, #fff4ff, transparent), radial-gradient(75% 35% at 50% 80%, #fc8de8, transparent);
-  color: #fff;
-  border: 1px solid #be03df;
-  box-shadow: inset 0 -2px 4px 1px rgba(220, 17, 231, 0.6), inset 0 -4px 4px 1px #e98dfc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(231, 17, 227, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px #e711c3;
-}
-.seasonnav.top-right.active {
-  background-color: #dfd003;
-  background-image: radial-gradient(75% 50% at 50% 0%, #fffff4, transparent), radial-gradient(75% 35% at 50% 80%, #f8fc8d, transparent);
-  color: #fff;
-  border: 1px solid #d8df03;
-  box-shadow: inset 0 -2px 4px 1px rgba(231, 227, 17, 0.6), inset 0 -4px 4px 1px #fcf38d, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px #e7e311;
-}
-.seasonnav.bottom-left.active {
-  background-color: #03d0df;
-  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
-  color: #fff;
-  border: 1px solid #03dfdf;
-  box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6), inset 0 -4px 4px 1px #8deffc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px #11c7e7;
-}
-.seasonnav.bottom-right.active {
-  background-color: #df0303;
-  background-image: radial-gradient(75% 50% at 50% 0%, #fff4f4, transparent), radial-gradient(75% 35% at 50% 80%, #fc8d8d, transparent);
-  color: #fff;
-  border: 1px solid #df0303;
-  box-shadow: inset 0 -2px 4px 1px rgba(231, 17, 17, 0.6), inset 0 -4px 4px 1px #fc8d8d, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px #e71111;
-}
-.seasonnav.top.active {
-  background-color: #df5b03;
-  background-image: radial-gradient(75% 50% at 50% 0%, #fffaf4, transparent), radial-gradient(75% 35% at 50% 80%, #fcd08d, transparent);
-  color: #fff;
-  border: 1px solid #df6a03;
-  box-shadow: inset 0 -2px 4px 1px rgba(231, 138, 17, 0.6), inset 0 -4px 4px 1px #fcd18d, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px #e78711;
-}
-.seasonnav.bottom.active {
-  background-color: #0360df;
-  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
-  color: #fff;
-  border: 1px solid #0360df;
-  box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6), inset 0 -4px 4px 1px #8de3fc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px #116ee7;
+  background: #222;
+  box-shadow: inset 0 -2px 5px #111, 0 2px 8px #000;
 }
 
 .outer-zone {
   position: absolute;
   width: 50%;
   height: 50%;
-  background: rgba(0, 0, 0,);
+  background: rgba(0, 0, 0);
   border: none;
   pointer-events: auto;
   z-index: 1;
 }
 
-.outer-zone.top-left { top: 0; left: 0; border-top-left-radius: 100%; }
-.outer-zone.top-right { top: 0; right: 0; border-top-right-radius: 100%; }
-.outer-zone.bottom-left { bottom: 0; left: 0; border-bottom-left-radius: 100%; }
-.outer-zone.bottom-right { bottom: 0; right: 0; border-bottom-right-radius: 100%; }
+.outer-zone.top-left {
+  top: 0;
+  left: 0;
+  border-top-left-radius: 100%;
+}
+.outer-zone.top-right {
+  top: 0;
+  right: 0;
+  border-top-right-radius: 100%;
+}
+.outer-zone.bottom-left {
+  bottom: 0;
+  left: 0;
+  border-bottom-left-radius: 100%;
+}
+.outer-zone.bottom-right {
+  bottom: 0;
+  right: 0;
+  border-bottom-right-radius: 100%;
+}
 
 /* Inner Circle*/
 .inner-zone {
@@ -257,163 +255,200 @@ body {
   left: 18.625%;
 }
 
+/* Outer Zones*/
+.seasonnav.top-left.active {
+  background-color: #df03a8;
+  background-image: radial-gradient(75% 50% at 50% 0%, #fff4ff, transparent),
+    radial-gradient(75% 35% at 50% 80%, #fc8de8, transparent);
+  color: #fff;
+  border: 1px solid #be03df;
+  box-shadow: inset 0 -2px 4px 1px rgba(220, 17, 231, 0.6),
+    inset 0 -4px 4px 1px #e98dfc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2),
+    0 1px 4px 1px rgba(231, 17, 227, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 1px #e711c3;
+}
+.seasonnav.top-right.active {
+  background-color: #dfd003;
+  background-image: radial-gradient(75% 50% at 50% 0%, #fffff4, transparent),
+    radial-gradient(75% 35% at 50% 80%, #f8fc8d, transparent);
+  color: #fff;
+  border: 1px solid #d8df03;
+  box-shadow: inset 0 -2px 4px 1px rgba(231, 227, 17, 0.6),
+    inset 0 -4px 4px 1px #fcf38d, inset 0 0 2px 1px rgba(255, 255, 255, 0.2),
+    0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 1px #e7e311;
+}
+.seasonnav.bottom-left.active {
+  background-color: #03d0df;
+  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent),
+    radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
+  color: #fff;
+  border: 1px solid #03dfdf;
+  box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6),
+    inset 0 -4px 4px 1px #8deffc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2),
+    0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 1px #11c7e7;
+}
+.seasonnav.bottom-right.active {
+  background-color: #df0303;
+  background-image: radial-gradient(75% 50% at 50% 0%, #fff4f4, transparent),
+    radial-gradient(75% 35% at 50% 80%, #fc8d8d, transparent);
+  color: #fff;
+  border: 1px solid #df0303;
+  box-shadow: inset 0 -2px 4px 1px rgba(231, 17, 17, 0.6),
+    inset 0 -4px 4px 1px #fc8d8d, inset 0 0 2px 1px rgba(255, 255, 255, 0.2),
+    0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 1px #e71111;
+}
+.seasonnav.top.active {
+  background-color: #df5b03;
+  background-image: radial-gradient(75% 50% at 50% 0%, #fffaf4, transparent),
+    radial-gradient(75% 35% at 50% 80%, #fcd08d, transparent);
+  color: #fff;
+  border: 1px solid #df6a03;
+  box-shadow: inset 0 -2px 4px 1px rgba(231, 138, 17, 0.6),
+    inset 0 -4px 4px 1px #fcd18d, inset 0 0 2px 1px rgba(255, 255, 255, 0.2),
+    0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 1px #e78711;
+}
+.seasonnav.bottom.active {
+  background-color: #0360df;
+  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent),
+    radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
+  color: #fff;
+  border: 1px solid #0360df;
+  box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6),
+    inset 0 -4px 4px 1px #8de3fc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2),
+    0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 1px #116ee7;
+}
+
+.seasonnav {
+  font-size: 2rem;
+  text-align: outside;
+}
+
+/* Day/Night button */
 #daynightnav {
   -webkit-appearance: none;
   position: absolute;
   width: 25%;
   height: 25%;
-  background: rgb(238, 0, 0);
+  background: #111;
   border: none;
   pointer-events: auto;
   z-index: 3;
   left: 37.5%;
   top: 37.5%;
   border-radius: 100%;
+  box-shadow: inset 0 -2px 5px #000, 0 2px 5px #111;
 }
 
-/* Weather Buttons*/
-
+/* WEATHER BUTTONS */
 .weather-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px; /* Space between buttons and weather list */
+  gap: 10px;
   grid-column: 1 / span 3;
-  grid-row: 3;
+  grid-row: 2;
 }
 
 .weathernav {
-  background-color: #000000; /* Button background color */
-  color: white; /* Button text color */
-  border: none;
+  background-color: #111;
+  color: #eee;
+  border: 1px solid #333;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 2rem;
   height: 50%;
   width: 15%;
+  box-shadow: inset 0 -2px 5px #000, 0 2px 5px #111;
+}
+
+.weathernav:hover {
+  background-color: #222;
+  box-shadow: inset 0 -2px 5px #111, 0 2px 5px #000;
 }
 
 .weathernav.active {
   background-color: #0360df;
-  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
+  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent),
+    radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
   color: #fff;
   border: 1px solid #0360df;
-  box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6), inset 0 -4px 4px 1px #8de3fc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6),
+    inset 0 -4px 4px 1px #8de3fc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2),
+    0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
   text-shadow: 0 1px 1px #116ee7;
 }
 
-/* TIME LOCATION SECTION */
+/* TIME/LOCATION PANEL */
 .timelocationsection {
-  background: rgba(255, 255, 255, 0.2);
+  background: #111;
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 4px 15px #000, 0 4px 30px rgba(0,0,0,0.5);
+  border: 1px solid #222;
   height: 40%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-content: start;
+  justify-content: center;
+  align-content: center;
+  margin-left: 2rem;
 }
 
-.timelocationsection h1 {
-  font-size: 2rem;
-  font-weight: 400;
-}
-.timelocationsection h2 {
-  font-size: 8rem;
-  font-weight: 400;
-}
-.timelocationsection h3 {
-  font-size: 2rem;
-  font-weight:1;
-}
+.timelocationsection h1 { font-size: 2rem; font-weight: 400; color: #eee; }
+.timelocationsection h2 { font-size: 8rem; font-weight: 400; color: #eee; }
+.timelocationsection h3 { font-size: 2rem; font-weight: 1; color: #eee; }
 
-
-
-/*COLUMN 2 */
-
+/* COLUMN 2 */
 .column2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 50%;
+  background: #111;
 }
 
 #weatherimg {
-  background-color: lightblue;
+  background-color: #222;
   mask-image: url(./assets/ellipse.svg);
   mask-size: 100%;
   mask-repeat: no-repeat;
   mask-position: center;
   height: 100%;
-  width: 80%
+  width: 80%;
+  box-shadow: inset 0 0 15px #000, 0 4px 10px rgba(0,0,0,0.5);
 }
 
-
 /* COLUMN 3 */
-
 .column3 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: rgb(107, 107, 107);
+  background-color: #111;
   width: 25%;
+  box-shadow: inset 0 4px 15px #000, 0 4px 20px rgba(0,0,0,0.5);
 }
 
-.weatherscrollersection {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
+.weatherscrollersection { background: #111; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-}
+.container { display: flex; flex-direction: column; align-items: center; gap: 1rem; width: 100%; }
 
-#location-input {
+#locationinput { width: 100%; height: 5%; border: 1px solid #333; font-size: 1rem; z-index: 2; padding-left: 1rem;}
 
-  width: 100%;
-  height: 5%;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  z-index: 2;
-}
+.slider { position: relative; width: 100%; height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: space-between; overflow: hidden; top: -100px; }
 
-.slider {
-  position: relative;
-  width: 100%;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  overflow: hidden;
-  top: -100px;
-}
+.track { display: flex; height: 100%; width: 100%; flex-direction: column; align-items: center; transition: transform 0.3s ease-out; }
 
-.track {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease-out;
-}
-
+/* CARDS */
 .card {
   width: 85%;
   max-width: 300px;
   height: 50%;
   margin: 2.5vh 0;
-  background: white;
+  background: #111;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -421,55 +456,24 @@ body {
   align-items: center;
   font-size: clamp(1rem, 2vw, 1.1rem);
   font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: inset 0 4px 10px #000, 0 4px 10px rgba(0,0,0,0.6);
   opacity: 0;
   transform: scale(0.85);
   pointer-events: none;
   transition: transform 0.3s, box-shadow 0.3s, background 0.3s, opacity 0.3s;
   text-align: center;
+  color: #eee;
 }
 
-.card img {
-  width: 48px;
-  height: 48px;
-  margin: 5px 0;
-}
+.card img { width: 48px; height: 48px; margin: 5px 0; }
 
-.card.visible {
-  opacity: 0.5;
-  pointer-events: auto;
-}
+.card.visible { opacity: 0.5; pointer-events: auto; }
 
 .card.active {
   transform: scale(1.1);
-  background: #000000;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background: #222;
+  box-shadow: inset 0 4px 15px #000, 0 8px 20px rgba(0,0,0,0.8);
   opacity: 1;
 }
 
-
-.nav-btn:hover {
-  background: #000000;
-}
-
-/* CONFIG BUTTONS */
-#configbutton {
-  background-color: rgb(40, 40, 40);
-  height: 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  
-}
-
-.config {
-  height: 100%;
-  width: 20%;
-  background-color: #0360df;
-  background-image: radial-gradient(75% 50% at 50% 0%, #f4feff, transparent), radial-gradient(75% 35% at 50% 80%, #8de3fc, transparent);
-  color: #fff;
-  border: 1px solid #0360df;
-  box-shadow: inset 0 -2px 4px 1px rgba(17, 110, 231, 0.6), inset 0 -4px 4px 1px #8de3fc, inset 0 0 2px 1px rgba(255, 255, 255, 0.2), 0 1px 4px 1px rgba(17, 110, 231, 0.2), 0 1px 4px 1px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 1px 1px #116ee7;
-}
-
+.nav-btn:hover { background: #000; }
