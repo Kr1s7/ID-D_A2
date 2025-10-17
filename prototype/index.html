@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Import our external library, Tone.js -->
+  <script src="http://unpkg.com/tone"></script>
+
+  <!-- Import our CSS stylesheets -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Import our JS files -->
+  <script src="helperFunctions.js" defer></script>
+  <script src="toneSetup.js" defer></script>
+  <script src="keyboardController.js" defer></script>
+  <script src="UIControls.js" defer></script>
+  <script src="time.js" defer></script>
+  <script src="cardslider.js" defer></script>
+
+  <title>Patrick's Test</title>
+
+  <!-- favicon was sourced from favicon.io but the original graphics are copyright 2020 Twitter, Inc 
+       and other contributors -->
+  <!-- They are licensed under CC-BY 4.0 as linked below -->
+  <!-- https://creativecommons.org/licenses/by/4.0/ -->
+  <link rel="stylesheet" href="https://use.typekit.net/uuy7loz.css">
+  <link rel="stylesheet" href="https://use.typekit.net/uuy7loz.css">
+</head>
+
+<body></body>
+  <section class="uilayer">
+    <section class="column1">
+      <!-- this is the controls section -->
+      <section class="controlssection">
+        <input type="range" min="1" max="100" value="50" id="tempslider">
+        <button id="autobutton">autocustom</button>
+        <button id="randombutton">random</button>
+        <div class="seasondragger">
+          <div id="daynight"></div>
+          <div id="seasons4">
+            <div class="seasons4" id="spring"></div>
+            <div class="seasons4" id="summer"></div>
+            <div class="seasons4" id="autumn"></div>
+            <div class="seasons4" id="winter"></div>
+          </div>
+          <div id="seasons2">
+            <div id="wet"></div>
+            <div id="dry"></div>
+          </div>
+        </div>
+        <input type="range" min="1" max="100" value="50" id="weatherslider">
+      </section>
+
+      <!-- this is the time and location section -->
+      <section class="timelocationsection">
+        <h1 id="date"></h1>
+        <h2 id="time"></h2>
+        <h3 id="location"></h3>
+      </section>
+    </section>
+
+    <!-- this is the lens section -->
+    <section class="column2">
+        <div class="backgrounddiv">
+        </div>
+        <h1>Right click to move, left click to capture</h1>
+    </section>
+
+    <!-- this is the weather and temperature section -->
+    <section class="column3">
+      <section class="weatherscrollersection">
+        <!-- this is the search bar -->
+        <input type="text" id="searchbar" placeholder="Enter city or country">
+
+        <!-- this is the weather and temperature div -->
+        <div id="weatherdiv">
+          <button class="weathernav" id="weatherlast">+</button>
+          <div class="weatherlist">
+            <div class="weather active"id="weatherdiv1">
+              <h2>Weather</h2>
+              <h2>weathertext</h2>
+            </div>
+            <div class="weather"id="weatherdiv1">
+              <h2>Weather</h2>
+              <h2>weathertext</h2>
+            </div>
+            <div class="weather"id="weatherdiv1">
+              <h2>Weather</h2>
+              <h2>weathertext</h2>
+            </div>
+            <div class="weather"id="weatherdiv1">
+              <h2>Weather</h2>
+              <h2>weathertext</h2>
+            </div>
+            <div class="weather"id="weatherdiv1">
+              <h2>Weather</h2>
+              <h2>weathertext</h2>
+            </div>
+            <div class="weather"id="weatherdiv1">
+              <h2>Weather</h2>
+              <h2>weathertext</h2>
+            </div>
+            <div class="weather"id="weatherdiv1">
+              <h2>Weather</h2>
+              <h2>weathertext</h2>
+            </div>
+          </div>
+          <button class="weathernav" id="weathernext">+</button>
+        </div>
+
+        <!-- this is the config buttons -->
+        <div id="configbutton">
+          <button class="config" id="music">music</button>
+          <button class="config" id="sound">sound</button>
+          <button class="config" id="tempvalue">tempvalue</button>
+          <button class="config" id="placeholder">placeholder</button>
+        </div>
+      </section>
+    </section>
+
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Import our external library, Tone.js -->
+  <script src="http://unpkg.com/tone"></script>
+
+  <!-- Import our CSS stylesheets -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Import our JS files -->
+  <script src="helperFunctions.js" defer></script>
+  <script src="toneSetup.js" defer></script>
+  <script src="keyboardController.js" defer></script>
+  <script src="UIControls.js" defer></script>
+  <script src="time.js" defer></script>
+  <script src="cardslider.js" defer></script>
+  <script src="thermometer.js" defer></script>
+  <script src="seasonareatest.js" defer></script>
+
+  <title>Patrick's Test</title>
+
+  <!-- favicon attribution -->
+  <!-- https://creativecommons.org/licenses/by/4.0/ -->
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
+  <link rel="stylesheet" href="https://use.typekit.net/uuy7loz.css">
+</head>
+
+<body>
+  <section class="uilayer">
+    <section class="column1">
+      <!-- Controls section -->
+      <section class="controlssection">
+        <div class="thermometer-container">
+          <div class="thermometer" id="thermometer">
+            <div class="mercury" id="mercury"></div>
+            <div class="slider-handle" id="temp-handle"></div>
+          </div>
+          <div class="temperature-display" id="temp-display">20°C</div>
+        </div>
+        <button id="autobutton">autocustom</button>
+        <button id="randombutton">random</button>
+        <div class="seasondragger">
+          <div class="circle-container">
+            <!-- Outer Circle Zones -->
+            <div class="outer-zone top-left" data-zone="outer-tl">
+              <span class="label">Top Left</span>
+            </div>
+            <div class="outer-zone top-right" data-zone="outer-tr">
+              <span class="label">Top Right</span>
+            </div>
+            <div class="outer-zone bottom-left" data-zone="outer-bl">
+              <span class="label">Bottom Left</span>
+            </div>
+            <div class="outer-zone bottom-right" data-zone="outer-br">
+              <span class="label">Bottom Right</span>
+            </div>
+            <!-- Inner Circle Zones -->
+            <div class="inner-zone inner-top" data-zone="inner-top">
+              <span class="label">Inner Top</span>
+            </div>
+            <div class="inner-zone inner-bottom" data-zone="inner-bottom">
+              <span class="label">Inner Bottom</span>
+            </div>
+            <!-- Draggables -->
+            <div class="draggable" draggable="true" style="top: 20px; left: 20px;">A</div>
+            <div class="draggable" draggable="true" style="top: 20px; left: 80px;">B</div>
+            <div class="draggable" draggable="true" style="top: 20px; left: 20px;">C</div>
+            <!-- Radial slider handles -->
+            <div class="slider-handle" id="handle1"></div>
+            <div class="slider-handle" id="handle2"></div>
+          </div>
+        </div>
+        <div class="weather-container" id="weather-container">
+      <button class="weathernav" id="sunny">sunny</button>
+      <button class="weathernav" id="cloudy">sunny</button>
+      <button class="weathernav" id="rainy">sunny</button>
+      <button class="weathernav" id="windy">sunny</button>
+      <button class="weathernav" id="snowy">sunny</button>
+      <script src="weather.js"></script>
+    </div>
+      </section>
+
+      <!-- Time and location section -->
+      <section class="timelocationsection">
+        <h1 id="date"></h1>
+        <h2 id="time"></h2>
+        <h3 id="location"></h3>
+      </section>
+    </section>
+
+    <!-- Lens section -->
+    <section class="column2">
+      <div class="backgrounddiv"></div>
+      <h1>Right click to move, left click to capture</h1>
+    </section>
+
+    <!-- Weather and temperature section -->
+    <section class="column3">
+      <section class="weatherscrollersection">
+
+        <!-- Weather and temperature cards -->
+        <div class="container">
+    <input type="text" id="location-input" placeholder="Enter a city..." />
+    
+    <div class="slider" id="slider">
+      <button class="nav-btn" id="up-btn">▲</button>
+      <div class="track" id="track"></div>
+      <button class="nav-btn" id="down-btn">▼</button>
+    </div>
+  </div>
+
+        <!-- Config buttons -->
+        <div id="configbutton">
+          <button class="config" id="music">music</button>
+          <button class="config" id="sound">sound</button>
+          <button class="config" id="tempvalue">tempvalue</button>
+          <button class="config" id="placeholder">placeholder</button>
+        </div>
+      </section>
+    </section>
+  </section>
+</body>
+
+</html>

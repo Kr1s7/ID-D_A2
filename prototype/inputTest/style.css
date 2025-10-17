@@ -1,0 +1,9 @@
+select {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.xyControlBox {
+  width: 15rem; height: 15rem;
+  background-color: grey;
+}

@@ -1,0 +1,258 @@
+/* .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:. .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.  */
+/* Font Imports */
+
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:. .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.  */
+/* CSS Reset : based on Kevin Powell's code */
+/* https://youtu.be/2lyDv0wOQuQ?si=VtGSWSv8WB0flLd1 */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color-scheme: dark light;
+}
+
+body {
+  overflow: hidden;
+  font-family: "itc-avant-garde-gothic-pro", sans-serif;
+}
+
+/* CSS */
+
+/*UI LAYER*/
+.uilayer {
+  margin-left: 3vw;
+  margin-right: 3vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  display: flex;
+  justify-content: space-between;
+  height: 90vh;
+}
+
+/* COLUMN 1 */
+
+.column1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25%;
+}
+
+/* CONTROLS SECTION */
+.controlssection {
+  background-color: gray;
+  height: 60%;
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  grid-template-rows: 20% 60% 20%;
+}
+
+#tempslider {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  writing-mode: vertical-lr;
+  direction: rtl"
+}
+
+#autobutton {
+  grid-column: 2;
+  grid-row: 1;
+}
+#randombutton {
+  grid-column: 3;
+  grid-row: 1;
+}
+.seasondragger {
+  background-color: rgb(117, 109, 109);
+  grid-column: 2 / span 3;
+  grid-row: 2;
+  
+}
+
+#seasons4 {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  place-items: center;
+}
+
+.seasons4 {
+  width: 5vw;
+  height: 5vw;
+}
+
+#spring {
+  border-radius: 100% 0 0 0;
+  background-color: lightgreen;
+}
+
+#summer {
+  background-color: yellowgreen;
+  border-radius: 0 100% 0 0;
+}
+
+#autumn {
+  background-color: orange;
+  border-radius: 0 0 0 100%;
+}
+#winter {
+  background-color: lightblue;
+  border-radius: 0 0 100% 0;
+}
+
+#weatherslider {
+  grid-column: 1 / span 3;
+  grid-row: 3;
+}
+
+/* TIME LOCATION SECTION */
+.timelocationsection {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.timelocationsection h1 {
+  font-size: 3rem;
+  font-weight: 400;
+}
+.timelocationsection h2 {
+  font-size: 10rem;
+  font-weight: 400;
+}
+.timelocationsection h3 {
+  font-size: 4rem;
+  font-weight:1;
+}
+
+
+
+/*COLUMN 2 */
+
+.column2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.backgrounddiv {
+  background-color: lightblue;
+  mask-image: url(./assets/ellipse.svg);
+  mask-size: 100%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  height: 100%;
+  width: 80%;
+}
+
+/* COLUMN 3 */
+
+.column3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: lightgreen;
+  width: 25%;
+}
+
+.weatherscrollersection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+#searchbar {
+  background-color: purple;
+  height: 5%;
+  width: 100%;
+}
+
+#weatherdiv {
+  background-color: orange;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.weatherlist {
+  background-color: rgb(76, 76, 76);
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.weather {
+  height: 100%;
+  width: 100%;
+  background-color: lightpink;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding-top: 15%;
+  padding-bottom: 15%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+  opacity: 0;
+}
+
+.weather .active {
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 1;
+}
+
+.weather h2 {
+  font-size: 4rem;
+}
+
+.weathernav:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+/* CONFIG BUTTONS */
+#configbutton {
+  background-color: brown;
+  height: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.config {
+  height: 100%;
+  width: 20%;
+}
